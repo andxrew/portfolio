@@ -18,12 +18,7 @@ import image2 from '@/images/photos/diffRoad.jpg'
 import image3 from '@/images/photos/road.jpg'
 import image4 from '@/images/photos/perspective.jpg'
 import image5 from '@/images/photos/mountain.jpg'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoTesco from '@/images/logos/tesco.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
-import logoF3 from '@/images/logos/f3.svg'
+
 import logoFiv from '@/images/logos/fiverr-icon.svg'
 import logoMMU from '@/images/logos/mmu.svg'
 
