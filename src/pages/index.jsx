@@ -1,4 +1,4 @@
-import Image from "next/future/image"
+import Image from "next/image"
 import Head from "next/head"
 import Link from "next/link"
 import clsx from "clsx"
@@ -19,8 +19,11 @@ import image3 from "@/images/photos/road.jpg"
 import image4 from "@/images/photos/perspective.jpg"
 import image5 from "@/images/photos/mountain.jpg"
 
-import logoFiv from "@/images/logos/fiverr-icon.svg"
+import logoGUH from "@/images/logos/guh.png"
 import logoMMU from "@/images/logos/mmu.svg"
+import logoBarclays from "@/images/logos/BCS.svg"
+import logoGoogle from "@/images/logos/google.svg"
+import logoTesco from "@/images/logos/tesco.svg"
 
 import { generateRssFeed } from "@/lib/generateRssFeed"
 import { getAllArticles } from "@/lib/getAllArticles"
@@ -155,50 +158,72 @@ function Newsletter() {
 function Resume() {
 	let resume = [
 		{
-			company: "Freelance Projects",
-			title: "Web Apps and Mobile Apps",
-			logo: logoFiv,
-			start: "Summer 2023",
-			end: {
-				label: "Present",
-				dateTime: new Date().getFullYear(),
-			},
+			company: "Barclays Bank",
+			title: "Graduate Software Engineer",
+			logo: logoBarclays, // You can add this logo to your assets
+			start: "Aug 2025",
+			end: "Present",
+		},
+		{
+			company: "Barclays Bank",
+			title: "Technology Developer Intern",
+			logo: logoBarclays, // You can add this logo to your assets
+			start: "June 2024",
+			end: "Sept 2024",
+			description:
+				"Built machine learning models using Python and SQL to classify internal data changes, supporting informed decision-making with explainability features.",
+		},
+		{
+			company: "Google BGN Hackathon",
+			title: "2nd Place – FinTech Web App",
+			logo: logoGoogle, // Add logo if available
+			start: "Oct 2023",
+			description:
+				"Created a financial literacy web app to manage transactions and budgets with a smooth UX; placed 2nd out of national student teams.",
+		},
+		{
+			company: "GreatUniHack2023",
+			title: "Participant – Sustainability AI App",
+			logo: logoGUH, // Add logo if you have it
+			start: "Nov 2023",
+			description:
+				"Built a web/mobile app for code, image, and video generation with integrated tree-planting initiatives to offset user carbon footprints.",
+		},
+		{
+			company: "Tesco PLC",
+			title: "Assistant – Petrol Station Ops",
+			logo: logoTesco, // Add logo if you have it
+			start: "June 2023",
+			end: "Sept 2023",
+			description:
+				"Monitored and maintained petrol station computer systems, identifying opportunities to improve network efficiency and customer service.",
 		},
 		{
 			company: "University Projects",
-			title: "2D Interactive Games and Web Applications",
+			title: "Interactive Games, Web & AI Applications",
 			logo: logoMMU,
 			start: "Sept 2022",
-			end: "Summer 2023",
+			end: "Summer 2025",
+			description:
+				"Developed projects including 2D games, OpenAI-based quiz apps, and an AI-powered skin lesion classifier using React Native and TensorFlow.",
 		},
 		// {
-		//   company: 'F3',
-		//   title: 'People Operations',
-		//   logo: logoF3,
-		//   start: '2021',
-		//   end: '2022',
-		// },
-		// {
-		//   company: 'Hotel Football',
-		//   title: '',
-		//   logo: logoFacebook,
-		//   start: '2011',
-		//   end: '2014',
-		// },
-		// {
-		//   company: 'Starbucks',
-		//   title: 'Shift Supervisor',
-		//   logo: logoStarbucks,
-		//   start: '2008',
-		//   end: '2011',
+		// 	company: "Freelance Projects",
+		// 	title: "Web & Mobile App Developer",
+		// 	logo: logoFiv,
+		// 	start: "Summer 2023",
+		// 	end: {
+		// 		label: "Present",
+		// 		dateTime: new Date().getFullYear(),
+		// 	},
 		// },
 	]
 
 	return (
 		<div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-			<h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+			<h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100 md:text-base">
 				<BriefcaseIcon className="h-6 w-6 flex-none" />
-				<span className="ml-3">Work</span>
+				<span className="ml-3">Experience</span>
 			</h2>
 			<ol className="mt-6 space-y-4">
 				{resume.map((role, roleIndex) => (
@@ -214,29 +239,47 @@ function Resume() {
 								unoptimized
 							/>
 						</div>
-						<dl className="flex flex-auto flex-wrap gap-x-2">
-							<dt className="sr-only">Company</dt>
-							<dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-								{role.company}
-							</dd>
-							<dt className="sr-only">Role</dt>
-							<dd className="text-xs text-zinc-500 dark:text-zinc-400">
-								{role.title}
-							</dd>
-							<dt className="sr-only">Date</dt>
+						<dl className="flex flex-auto justify-between gap-x-2">
+							<div className="flex flex-col">
+								<dt className="sr-only">Company</dt>
+								<dd className="text-sm font-medium text-zinc-900 dark:text-zinc-100 md:text-base">
+									{role.company}
+								</dd>
+
+								<dt className="sr-only">Role</dt>
+								<dd className="text-xs text-zinc-500 dark:text-zinc-400 md:text-base md:font-medium">
+									{role.title}
+								</dd>
+
+								{role.description && (
+									<dd className="mt-0 hidden max-w-md text-xs text-zinc-500 dark:text-zinc-400 md:block md:text-sm">
+										{role.description}
+									</dd>
+								)}
+							</div>
+
 							<dd
-								className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-								aria-label={`${role.start.label ?? role.start} until ${
-									role.end.label ?? role.end
-								}`}
+								className="ml-auto whitespace-nowrap text-xs text-zinc-400 dark:text-zinc-500"
+								aria-label={
+									role.end
+										? `${role.start.label ?? role.start} until ${
+												role.end.label ?? role.end
+										  }`
+										: `${role.start.label ?? role.start}`
+								}
 							>
 								<time dateTime={role.start.dateTime ?? role.start}>
 									{role.start.label ?? role.start}
-								</time>{" "}
-								<span aria-hidden="true">—</span>{" "}
-								<time dateTime={role.end.dateTime ?? role.end}>
-									{role.end.label ?? role.end}
 								</time>
+								{role.end && (
+									<>
+										{" "}
+										<span aria-hidden="true">—</span>{" "}
+										<time dateTime={role.end.dateTime ?? role.end}>
+											{role.end.label ?? role.end}
+										</time>
+									</>
+								)}
 							</dd>
 						</dl>
 					</li>
@@ -295,13 +338,14 @@ export default function Home({ articles }) {
 			<Container className="mt-9">
 				<div className="max-w-2xl">
 					<h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-						Developer, student, and entrepreneur.
+						Developer, innovator, and entrepreneur.
 					</h1>
 					<p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-						I’m Andrew, a full-stack developer and entrepreneur based in
-						Manchester, UK. Currently I’m studying Computer Science at the
-						Manchester Metropolitan University - whilst creating web and mobile
-						applications for clients on the side.
+						I’m Andrew ( drew for short ), a full-stack developer and
+						entrepreneur based in Manchester, UK. I recently graduated with a
+						First-Class degree in Computer Science from Manchester Metropolitan
+						University and now focus on building modern web and mobile
+						applications.
 					</p>
 					<div className="mt-6 flex gap-6">
 						<SocialLink
@@ -329,7 +373,6 @@ export default function Home({ articles }) {
           </div> */}
 					<div className="space-y-10 lg:pl-16 xl:pl-24">
 						<Resume />
-						<Newsletter />
 					</div>
 				</div>
 			</Container>
